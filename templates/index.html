@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parallel Image Processing</title>
+</head>
+<body>
+    <h1>Upload an Image for Processing</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <select name="task">
+            <option value="blur">Gaussian Blur</option>
+            <option value="edge">Edge Detection</option>
+            <option value="object">Object Detection</option>
+        </select>
+        <button type="submit">Upload & Process</button>
+    </form>
+
+    {% if uploaded_file %}
+        <h2>Original Image:</h2>
+        <img src="{{ url_for('uploaded_file', filename=uploaded_file) }}" width="300">
+        <h2>Processed Image:</h2>
+        <img src="{{ url_for('processed_file', filename=processed_file) }}" width="300">
+    {% endif %}
+</body>
+</html>
